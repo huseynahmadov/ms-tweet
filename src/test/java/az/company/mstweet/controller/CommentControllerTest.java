@@ -2,8 +2,6 @@ package az.company.mstweet.controller;
 
 import az.company.mstweet.model.dto.CommentDto;
 import az.company.mstweet.service.CommentService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static az.company.mstweet.properties.TestContants.*;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -26,19 +25,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(controllers = CommentController.class)
 class CommentControllerTest {
 
-    private static final Long COMMENT_ID = 1L;
-    private static final Long POST_ID = 1L;
-    private static final String COMMENT_CONTENT = "Test Comment";
-    private static final String COMMENT_CONTROLLER_PATH = "/v1/comments";
-
     private static List<CommentDto> commentDtos;
     private static CommentDto commentDto;
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @MockBean
     private CommentService commentService;
@@ -90,4 +81,5 @@ class CommentControllerTest {
         verify(commentService, times(1))
                 .changeCommentContent(COMMENT_ID, COMMENT_CONTENT);
     }
+
 }
