@@ -8,4 +8,6 @@ public interface TestContants {
     String COMMENT_CONTROLLER_PATH = "/v1/comments";
 
     String TAG_CONTROLLER_PATH = "/v1/tags";
+    String POST_CONTROLLER_PATH = "/v1/posts";
+
 }
